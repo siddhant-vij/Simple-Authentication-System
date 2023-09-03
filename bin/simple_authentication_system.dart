@@ -95,11 +95,11 @@ class SimpleAuthSystem {
         print("Blank password not allowed. Try another one.");
         continue;
       }
-      if (!_isPasswordStrong(password)) {
+      if (!authController.isPasswordStrong(password)) {
         print(
             "Your password is too weak. It should have at least 8 characters, one uppercase, one lowercase, one number, and one special character.");
       }
-    } while (!_isPasswordStrong(password));
+    } while (!authController.isPasswordStrong(password));
 
     String? securityQuestion = _getInput(
         "Enter a security question (e.g., 'What's your pet's name?'): ");
@@ -164,7 +164,7 @@ class SimpleAuthSystem {
         print("Blank password not allowed. Try another one.");
         continue;
       }
-      if (!_isPasswordStrong(newPassword)) {
+      if (!authController.isPasswordStrong(newPassword)) {
         print(
             "Your password is too weak. It should have at least 8 characters, one uppercase, one lowercase, one number, and one special character.");
         continue;
@@ -226,7 +226,7 @@ class SimpleAuthSystem {
       print("Answer cannot be blank.");
       return;
     }
-    if (PasswordHasher.verifyPassword(answer, user.securityAnswer)) {
+    if (authController.validateSecurityAnswer(answer, user.securityAnswer)) {
       _resetPassword(authController, username);
     } else {
       print("Incorrect answer. Please try again.");
@@ -245,20 +245,5 @@ class SimpleAuthSystem {
     stdin.echoMode = true;
     print(''); // move to a new line after input
     return password ?? '';
-  }
-
-  bool _isPasswordStrong(String password) {
-    bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
-    bool hasDigits = password.contains(RegExp(r'[0-9]'));
-    bool hasLowercase = password.contains(RegExp(r'[a-z]'));
-    bool hasSpecialCharacters =
-        password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
-    bool hasMinLength = password.length >= 8;
-
-    return hasUppercase &&
-        hasDigits &&
-        hasLowercase &&
-        hasSpecialCharacters &&
-        hasMinLength;
   }
 }

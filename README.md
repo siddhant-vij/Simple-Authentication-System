@@ -27,6 +27,7 @@ A terminal-based authentication system designed to showcase registration, login,
 - **Password Strength Checker**: Enforce users to choose strong passwords during registration or reset.
 - **Forgot Password Mechanism**: Offer a mechanism for users to recover their password if forgotten.
 - **Delete Account Option**: Allow users to delete their account and all associated data.
+- **Lockout Mechanism**: Deter brute-force attempts by locking out after consecutive incorrect password attempts.
 
 <br>
 
@@ -97,21 +98,19 @@ Contributions are what make the open-source community such an amazing place to l
 
 Below are some of the potential improvements and added functionalities that can enhance the Simple Authentication System:
 
-**1. Data Encryption**: Encrypt the data in the CSV to ensure user data is secure even with direct file access.
+**1. Session Management**: A timeout mechanism that logs out the user after a certain period of inactivity.
 
-**2. Multi-Factor Authentication**: Introduce an option for users to enable additional security layers for logging in.
+**2. Audit Log**: Maintain a log of all authentication activities for monitoring and security purposes.
 
-**3. Lockout Mechanism**: Implement a system to deter brute-force attempts by locking out or delaying login after consecutive incorrect password attempts.
+**3. Multi-Factor Authentication**: Introduce an option for users to enable additional security layers for logging in.
 
-**4. Audit Log**: Maintain a log of all authentication activities for monitoring and security purposes.
+**4. Backup and Recovery**: Design a backup mechanism to safeguard user data and ensure recovery options in case of system failures.
 
-**5. Backup and Recovery**: Design a backup mechanism to safeguard user data and ensure recovery options in case of system failures.
+**5. Transition to a Relational Database**: Migrate from a CSV-based system to a more robust relational database like PostgreSQL or MySQL for better scalability, performance, and security.
 
-**6. Transition to a Relational Database**: Migrate from a CSV-based system to a more robust relational database like PostgreSQL or MySQL for better scalability, performance, and security.
+**6. Database Backup**: Implement routine backups of the database to ensure data safety in case of unexpected failures.
 
-**7. Database Backup**: Implement routine backups of the database to ensure data safety in case of unexpected failures.
-
-**8. Data Validation and Sanitization**: Enhance the system to validate and sanitize inputs more thoroughly to protect against SQL injection and other potential threats, especially if moving to a more complex database system.
+**7. Data Validation and Sanitization**: Enhance the system to validate and sanitize inputs more thoroughly to protect against SQL injection and other potential threats, especially if moving to a more complex database system.
 
 
 <br>
