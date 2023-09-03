@@ -23,6 +23,10 @@ A terminal-based authentication system designed to showcase registration, login,
 - **CSV-Based Storage**: User data is stored and retrieved from a CSV file.
 - **Secure**: Passwords are hashed before being stored.
 - **CLI Interface**: Clear menu-driven CLI interface to interact with the system.
+- **Logout Feature**: Allow logged-in users to securely log out of the system.
+- **Password Strength Checker**: Enforce users to choose strong passwords during registration or reset.
+- **Forgot Password Mechanism**: Offer a mechanism for users to recover their password if forgotten.
+- **Delete Account Option**: Allow users to delete their account and all associated data.
 
 <br>
 
@@ -93,29 +97,21 @@ Contributions are what make the open-source community such an amazing place to l
 
 Below are some of the potential improvements and added functionalities that can enhance the Simple Authentication System:
 
-**1. Logout Feature**: Allow logged-in users to securely log out of the system.
+**1. Data Encryption**: Encrypt the data in the CSV to ensure user data is secure even with direct file access.
 
-**2. Password Strength Checker**: Implement a system to guide or enforce users to choose strong passwords during registration or reset.
+**2. Multi-Factor Authentication**: Introduce an option for users to enable additional security layers for logging in.
 
-**3. Forgot Password Mechanism**: Offer a mechanism for users to recover their password if forgotten.
+**3. Lockout Mechanism**: Implement a system to deter brute-force attempts by locking out or delaying login after consecutive incorrect password attempts.
 
-**4. Data Encryption**: Encrypt the data in the CSV to ensure user data is secure even with direct file access.
+**4. Audit Log**: Maintain a log of all authentication activities for monitoring and security purposes.
 
-**5. Multi-Factor Authentication**: Introduce an option for users to enable additional security layers for logging in.
+**5. Backup and Recovery**: Design a backup mechanism to safeguard user data and ensure recovery options in case of system failures.
 
-**6. Lockout Mechanism**: Implement a system to deter brute-force attempts by locking out or delaying login after consecutive incorrect password attempts.
+**6. Transition to a Relational Database**: Migrate from a CSV-based system to a more robust relational database like PostgreSQL or MySQL for better scalability, performance, and security.
 
-**7. Audit Log**: Maintain a log of all authentication activities for monitoring and security purposes.
+**7. Database Backup**: Implement routine backups of the database to ensure data safety in case of unexpected failures.
 
-**8. Delete Account Option**: Allow users to delete their account and all associated data.
-
-**9. Backup and Recovery**: Design a backup mechanism to safeguard user data and ensure recovery options in case of system failures.
-
-**10. Transition to a Relational Database**: Migrate from a CSV-based system to a more robust relational database like PostgreSQL or MySQL for better scalability, performance, and security.
-
-**11. Database Backup**: Implement routine backups of the database to ensure data safety in case of unexpected failures.
-
-**12. Data Validation and Sanitization**: Enhance the system to validate and sanitize inputs more thoroughly to protect against SQL injection and other potential threats, especially if moving to a more complex database system.
+**8. Data Validation and Sanitization**: Enhance the system to validate and sanitize inputs more thoroughly to protect against SQL injection and other potential threats, especially if moving to a more complex database system.
 
 
 <br>

@@ -14,7 +14,8 @@ class AuthController {
     _userHandler.writeCSV([]); // Clears the CSV content
   }
 
-  bool registerUser(String username, String password) {
+  bool registerUser(String username, String password, String securityQuestion,
+      String securityAnswer) {
     final existingUser = findUserByUsername(username);
     if (existingUser != null) throw Exception('Username already exists');
     if (username.trim().isEmpty || password.trim().isEmpty) {
@@ -25,7 +26,9 @@ class AuthController {
     final newUser = User(
         id: DateTime.now().toIso8601String(),
         username: username,
-        hashedPassword: hashedPassword);
+        hashedPassword: hashedPassword,
+        securityQuestion: securityQuestion,
+        securityAnswer: securityAnswer);
     _userHandler.writeCSV(
         [...getUsers().map((user) => user.toCSV()).toList(), newUser.toCSV()]);
     return true;
@@ -39,7 +42,6 @@ class AuthController {
       return null;
     }
   }
-
 
   User loginUser(String username, String password) {
     final user = findUserByUsername(username);
@@ -58,12 +60,22 @@ class AuthController {
     if (userIndex == -1) throw Exception('Username not found');
 
     User updatedUser = User(
-      id: users[userIndex].id,
-      username: users[userIndex].username,
-      hashedPassword: hashedNewPassword,
-    );
+        id: users[userIndex].id,
+        username: users[userIndex].username,
+        hashedPassword: hashedNewPassword,
+        securityQuestion: users[userIndex].securityQuestion,
+        securityAnswer: users[userIndex].securityAnswer);
     users[userIndex] = updatedUser;
     _userHandler.writeCSV(users.map((user) => user.toCSV()).toList());
     return true; // Password reset successful
+  }
+
+  void deleteUserByUsername(String? username) {
+    List<List<dynamic>> csvUsers = _userHandler.readCSV();
+    List<User> users = csvUsers.map((record) => User.fromCSV(record)).toList();
+    users.removeWhere((user) => user.username == username);
+    List<List<dynamic>> updatedCsvUsers =
+        users.map((user) => user.toCSV()).toList();
+    _userHandler.writeCSV(updatedCsvUsers);
   }
 }
