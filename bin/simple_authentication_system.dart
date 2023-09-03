@@ -222,7 +222,11 @@ class SimpleAuthSystem {
 
     print("Security Question: ${user.securityQuestion}");
     String? answer = _getInput("Enter your answer: ");
-    if (answer == user.securityAnswer) {
+    if (answer == null) {
+      print("Answer cannot be blank.");
+      return;
+    }
+    if (PasswordHasher.verifyPassword(answer, user.securityAnswer)) {
       _resetPassword(authController, username);
     } else {
       print("Incorrect answer. Please try again.");

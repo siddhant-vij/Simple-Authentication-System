@@ -23,12 +23,13 @@ class AuthController {
     }
 
     final hashedPassword = PasswordHasher.hashPassword(password);
+    final hashedSecurityAnswer = PasswordHasher.hashPassword(securityAnswer);
     final newUser = User(
         id: DateTime.now().toIso8601String(),
         username: username,
         hashedPassword: hashedPassword,
         securityQuestion: securityQuestion,
-        securityAnswer: securityAnswer);
+        securityAnswer: hashedSecurityAnswer);
     _userHandler.writeCSV(
         [...getUsers().map((user) => user.toCSV()).toList(), newUser.toCSV()]);
     return true;
